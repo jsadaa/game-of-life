@@ -1,8 +1,9 @@
 class Patterns {
     constructor() {
-        this.stillLifes = [
+        this.patterns = [
             {
                 name: "Block",
+                type: "stillLife",
                 structure: [
                     [1, 1],
                     [1, 1]
@@ -10,6 +11,7 @@ class Patterns {
             },
             {
                 name: "Beehive",
+                type: "stillLife",
                 structure: [
                     [0, 1, 1, 0],
                     [1, 0, 0, 1],
@@ -18,6 +20,7 @@ class Patterns {
             },
             {
                 name: "Loaf",
+                type: "stillLife",
                 structure: [
                     [0, 1, 1, 0],
                     [1, 0, 0, 1],
@@ -27,6 +30,7 @@ class Patterns {
             },
             {
                 name: "Boat",
+                type: "stillLife",
                 structure: [
                     [1, 1, 0],
                     [1, 0, 1],
@@ -35,17 +39,16 @@ class Patterns {
             },
             {
                 name: "Tub",
+                type: "stillLife",
                 structure: [
                     [0, 1, 0],
                     [1, 0, 1],
                     [0, 1, 0]
                 ]
-            }
-        ];
-
-        this.oscillators = [
+            },
             {
                 name: "Blinker",
+                type: "oscillator",
                 structure: [
                     [1],
                     [1],
@@ -54,6 +57,7 @@ class Patterns {
             },
             {
                 name: "Toad",
+                type: "oscillator",
                 structure: [
                     [0, 1, 1, 1],
                     [1, 1, 1, 0]
@@ -61,6 +65,7 @@ class Patterns {
             },
             {
                 name: "Beacon",
+                type: "oscillator",
                 structure: [
                     [1, 1, 0, 0],
                     [1, 1, 0, 0],
@@ -70,6 +75,7 @@ class Patterns {
             },
             {
                 name: "Pulsar",
+                type: "oscillator",
                 structure: [
                     [0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0],
                     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -88,6 +94,7 @@ class Patterns {
             },
             {
                 name: "Pentadecathlon",
+                type: "oscillator",
                 structure: [
                     [0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
                     [1, 1, 0, 1, 1, 1, 1, 0, 1, 1],
@@ -96,6 +103,7 @@ class Patterns {
             },
             {
                 name: "Figure Eight",
+                type: "oscillator",
                 structure: [
                     [1, 1, 1, 0, 0, 0],
                     [1, 1, 1, 0, 0, 0],
@@ -104,12 +112,10 @@ class Patterns {
                     [0, 0, 0, 1, 1, 1],
                     [0, 0, 0, 1, 1, 1]
                 ]
-            }
-        ];
-
-        this.spaceships = [
+            },
             {
                 name: "Glider",
+                type: "spaceship",
                 structure: [
                     [0, 1, 0],
                     [0, 0, 1],
@@ -118,6 +124,7 @@ class Patterns {
             },
             {
                 name: "Lightweight Spaceship",
+                type: "spaceship",
                 structure: [
                     [0, 1, 0, 0, 1],
                     [1, 0, 0, 0, 0],
@@ -127,6 +134,7 @@ class Patterns {
             },
             {
                 name: "Middleweight Spaceship",
+                type: "spaceship",
                 structure: [
                     [0, 0, 0, 1, 0, 0],
                     [0, 1, 0, 0, 0, 1],
@@ -137,6 +145,7 @@ class Patterns {
             },
             {
                 name: "Heavyweight Spaceship",
+                type: "spaceship",
                 structure: [
                     [0, 0, 0, 1, 1, 0, 0],
                     [0, 1, 0, 0, 0, 0, 1],
@@ -145,11 +154,9 @@ class Patterns {
                     [1, 1, 1, 1, 1, 1, 0]
                 ]
             },
-        ];
-
-        this.metuselahs = [
             {
                 name: "R-pentomino",
+                type: "metuselah",
                 structure: [
                     [0, 1, 1],
                     [1, 1, 0],
@@ -160,34 +167,17 @@ class Patterns {
     }
 
     find(name) {
-        let structure = this.stillLifes.find(struct => struct.name === name);
-        if (structure) {
-            return structure;
-        }
-
-        structure = this.oscillators.find(struct => struct.name === name);
-        if (structure) {
-            return structure;
-        }
-
-        structure = this.spaceships.find(struct => struct.name === name);
-        if (structure) {
-            return structure;
-        }
-
-        structure = this.metuselahs.find(struct => struct.name === name);
-        if (structure) {
-            return structure;
-        }
-
-        return null;
+        return this.patterns.find(pattern => pattern.name === name);
     }
 
     getNames() {
-        return this.stillLifes.map(struct => struct.name)
-            .concat(this.oscillators.map(struct => struct.name))
-            .concat(this.spaceships.map(struct => struct.name))
-            .concat(this.metuselahs.map(struct => struct.name));
+        return this.patterns.reduce((acc, pattern) => {
+            if (!acc[pattern.type]) {
+                acc[pattern.type] = [];
+            }
+            acc[pattern.type].push(pattern.name);
+            return acc;
+        }, {});
     }
 }
 

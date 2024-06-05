@@ -24,14 +24,19 @@ class App {
         this.patterns = new Patterns();
 
         let names = this.patterns.getNames();
-        names.push("Random");
+        names.Random = ["Random"];
 
-        names.forEach(name => {
-            const option = document.createElement('option');
-            option.value = name;
-            option.innerText = name;
-            this.patternsSelect.appendChild(option);
-        });
+        for (let type in names) {
+            let optGroup = document.createElement('optgroup');
+            optGroup.label = type;
+            names[type].forEach(name => {
+                let option = document.createElement('option');
+                option.value = name;
+                option.innerText = name;
+                optGroup.appendChild(option);
+            });
+            this.patternsSelect.appendChild(optGroup);
+        }
 
         this.patternsSelect.value = "Random";
 
