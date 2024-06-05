@@ -154,15 +154,6 @@ class Patterns {
                     [1, 1, 1, 1, 1, 1, 0]
                 ]
             },
-            {
-                name: "R-pentomino",
-                type: "metuselah",
-                structure: [
-                    [0, 1, 1],
-                    [1, 1, 0],
-                    [0, 1, 0]
-                ]
-            },
         ];
     }
 
