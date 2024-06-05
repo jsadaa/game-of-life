@@ -42,13 +42,13 @@
         button:active { background-color: #e0e0e0; }
         button:hover { background-color: #e0e0e0; }
         canvas { display: block; margin: 0 auto; }
-        #props {
+        #params {
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 2rem 0;
         }
-        .prop { margin: 0 10px; }
+        .param { margin: 0 10px; }
         input[type="range"] {
             margin-left: 10px;
         }
@@ -72,11 +72,11 @@
     </style>
 </head>
 <body>
-<h1>Game of life (toroidal grid)</h1>
-<h2>See : <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">John Conway's Game of Life</a></h2>
-<div id="props">
-    <p class="prop">Generation: <span id="generation">0</span></p>
-    <p class="prop">Population: <span id="population">0</span></p>
+<h1>Game of life</h1>
+<h2>See : <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">John Conway's Game of Life</a> (with toroidal grid)</h2>
+<div id="params">
+    <p class="param">Generation: <span id="generation">0</span></p>
+    <p class="param">Population: <span id="population">0</span></p>
 </div>
 <div id="buttons">
     <button id="play">&#9205;</button>
