@@ -45,9 +45,9 @@ class Grid {
                 if (x === 0 && y === 0) {
                     continue;
                 }
-                if (this.grid[i + x] && this.grid[i + x][j + y]) {
-                    count += this.grid[i + x][j + y].state;
-                }
+                let newX = (i + x + this.grid.length) % this.grid.length;
+                let newY = (j + y + this.grid[0].length) % this.grid[0].length;
+                count += this.grid[newX][newY].state;
             }
         }
         return count;
