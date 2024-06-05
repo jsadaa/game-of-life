@@ -152,19 +152,26 @@ class App {
             this.population.innerText = '' + this.grid.getPopulation();
             this.drawGrid();
             this.iterations++;
-        }, 100);
+        }, 90);
     }
 
     drawGrid() {
         const cellSize = Math.min(this.canvas.width, this.canvas.height) / 50;
         const radius = Math.min(cellSize / 2, this.radius);
 
+        // Increase the alpha value in the fillStyle to make the trails fade out faster
+        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
         for (let x = 0; x < 50; x++) {
             for (let y = 0; y < 50; y++) {
                 this.ctx.fillStyle = this.grid.grid[x][y].color;
+
                 this.ctx.beginPath();
                 this.ctx.arc(x * cellSize + radius, y * cellSize + radius, radius, 0, Math.PI * 2);
+                this.ctx.globalAlpha = this.grid.grid[x][y].state ? 1 : 0.5;
                 this.ctx.fill();
+                this.ctx.globalAlpha = 1;
             }
         }
     }

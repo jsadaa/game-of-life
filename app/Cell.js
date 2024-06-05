@@ -3,7 +3,7 @@ class Cell {
     constructor(state) {
         this.counter = 0;
         this.state = state;
-        this.color = 'lightgray';
+        this.color = 'rgba(211, 211, 211, 0)';
     }
 
     updateState(newState) {
@@ -13,7 +13,7 @@ class Cell {
             this.generateColor();
         } else {
             this.counter = 0;
-            this.color = 'lightgray';
+            this.color = 'rgba(211, 211, 211, 0)';
         }
     }
 
