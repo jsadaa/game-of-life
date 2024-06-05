@@ -15,7 +15,7 @@ I also plan to add more patterns and features in the future.
 
 ## How to run
 
-Just open the `index.html` file in your browser (The project is not hosted anywhere for now, but will be soon).
+Just open the `index.html` file in your browser or click [here](https://game-of-life.noarchive.fr/).
 
 ## How to use
 
