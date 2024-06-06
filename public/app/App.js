@@ -11,12 +11,14 @@ class App {
     reset = document.getElementById('reset');
     patternsSelect = document.getElementById('patterns');
     radiusSelect = document.getElementById('radius');
+    speedSelect = document.getElementById('speed');
     isPlaying = false;
     isPaused = false;
 
     constructor() {
         this.radius = 4;
         this.iterations = 0;
+        this.speed = 100;
 
         this.grid = new Grid();
         this.grid.randomInit(50, 50);
@@ -77,6 +79,14 @@ class App {
             this.init();
             this.drawGrid();
         });
+
+        this.speedSelect.addEventListener('change', () => {
+            this.speed = Math.abs(parseInt(this.speedSelect.value)) * 10;
+            if (this.isPlaying) {
+                clearInterval(this.interval);
+                this.interval = this.startInterval();
+            }
+        });
     }
 
     initGame() {
@@ -112,10 +122,6 @@ class App {
     initCanvas() {
         this.canvas.width = 500;
         this.canvas.height = 500;
-        this.canvas.style.position = 'absolute';
-        this.canvas.style.left = '50%';
-        this.canvas.style.top = '62%';
-        this.canvas.style.transform = 'translate(-50%, -50%)';
         this.canvas.style.border = '3px solid black';
         this.canvas.style.borderRadius = '5px';
         this.canvas.style.backgroundColor = 'lightgray';
@@ -143,7 +149,7 @@ class App {
             this.population.innerText = '' + this.grid.getPopulation();
             this.drawGrid();
             this.iterations++;
-        }, 90);
+        }, this.speed);
     }
 
     drawGrid() {
