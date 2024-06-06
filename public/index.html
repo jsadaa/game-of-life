@@ -7,7 +7,7 @@
         body {
             margin: 0;
             background-color: #b0b0b0;
-            background-image: url('./assets/background-3.webp');
+            background-image: url('assets/img/background-3.webp');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -80,6 +80,7 @@
             color: #dddddd;
         }
         a:visited { color: inherit; }
+        .icon-img { width: 1.5rem; height: 1.5rem; }
     </style>
 </head>
 <body>
@@ -90,9 +91,15 @@
     <p class="param">Population: <span id="population">0</span></p>
 </div>
 <div id="buttons">
-    <button id="play">&#9205;</button>
-    <button id="pause">&#9208;</button>
-    <button id="reset">&#9209;</button>
+    <button id="play">
+        <img src="assets/icon/play.png" class="icon-img" alt="play">
+    </button>
+    <button id="pause">
+        <img src="assets/icon/pause.png" class="icon-img" alt="pause">
+    </button>
+    <button id="reset">
+        <img src="assets/icon/stop.png" class="icon-img" alt="stop">
+    </button>
     <label for="patterns"></label>
         <select id="patterns">
             <option value="Patterns" selected disabled>Patterns</option>
