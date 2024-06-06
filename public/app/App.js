@@ -50,20 +50,11 @@ class App {
 
     addListeners() {
         this.play.addEventListener('click', () => {
-            if (!this.isPlaying) {
-                this.initGame();
-                this.interval = this.startInterval();
-                this.isPlaying = true;
-                this.isPaused = false;
-            }
+            this.Play();
         });
 
         this.pause.addEventListener('click', () => {
-            if (this.isPlaying) {
-                clearInterval(this.interval);
-                this.isPlaying = false;
-                this.isPaused = true;
-            }
+            this.Pause();
         });
 
         this.reset.addEventListener('click', () => {
@@ -173,6 +164,23 @@ class App {
                 this.ctx.fill();
                 this.ctx.globalAlpha = 1;
             }
+        }
+    }
+
+    Play() {
+        if (!this.isPlaying) {
+            this.initGame();
+            this.interval = this.startInterval();
+            this.isPlaying = true;
+            this.isPaused = false;
+        }
+    }
+
+    Pause() {
+        if (this.isPlaying) {
+            clearInterval(this.interval);
+            this.isPlaying = false;
+            this.isPaused = true;
         }
     }
 }
